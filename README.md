@@ -67,32 +67,36 @@ Color-coded ghosts with state-based color changes
 
 Heads-up display showing score and current level
 
-Project Structure
+## Project Structure
+
 pacman/
 ├── constants.py
 │   ├── Screen dimensions, colors, and timing constants
 │   └── Maze layouts and level data
-│
 ├── rendering.py
 │   ├── Maze drawing
 │   ├── Pac-Man animation
 │   ├── Ghost rendering
 │   └── HUD and end screens
-│
 ├── game_logic.py
 │   ├── A* pathfinding implementation
 │   ├── Ghost AI and movement logic
 │   ├── Collision detection
 │   ├── Target selection heuristics
 │   └── Level reset utilities
-│
-├── __init__.py
-│   └── Package marker
-│
+└── __init__.py
+
 main.py
 ├── Game loop and state management
 ├── AI coordination
 └── Rendering orchestration
+
+requirements.txt
+README.md
+.gitignore
+
+
+
 Installation
 Prerequisites
 
@@ -105,4 +109,5 @@ Setup
 Clone the repository:
 git clone https://github.com/yourusername/pacman_game.git
 cd pacman_game
+
 
