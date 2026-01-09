@@ -1,164 +1,104 @@
-# Pac-Man AI Game (Python + Pygame)
+
+# AI‑Driven Pac‑Man
 
 ## Overview
+This project is an AI‑controlled Pac‑Man game implemented in Python using Pygame. The core objective is to demonstrate practical pathfinding and decision‑making algorithms operating in a real‑time game environment rather than a static or turn‑based simulation.
 
-This project is a fully autonomous implementation of the classic Pac-Man game, built in Python using Pygame. Unlike traditional Pac-Man versions that rely on player input, Pac-Man in this project is controlled entirely by artificial intelligence.
-
-The AI uses A* pathfinding combined with real-time heuristics to navigate the maze, avoid ghosts, pursue power pellets, and strategically hunt ghosts during power mode. The project emphasizes algorithmic decision making, clean architecture, and readable, maintainable code, reflecting the standards expected of a graduating computer science student.
-
----
-
-## Features
-
-### Gameplay
-- Classic Pac-Man mechanics implemented from scratch
-- Pellet and power-pellet consumption
-- Score tracking and multi-level progression
-- Game over and win screens
-
-### Artificial Intelligence
-- A* pathfinding for autonomous Pac-Man navigation
-- Dynamic target selection based on:
-  - Ghost proximity
-  - Power mode state
-  - Pellet value and safety
-- Continuous path re-evaluation when the environment changes
-- Warp tunnel awareness integrated into pathfinding heuristics
-
-### Ghost AI
-- Four independent ghosts with individual states
-- Context-aware chase and flee behavior
-- Respawn system after being eaten
-- Warp tunnel traversal with delays and slowdowns
-- Randomized movement elements to prevent deterministic behavior
+The Pac‑Man agent uses heuristic search to navigate the maze, avoid ghosts, and prioritize pellet collection, achieving a high win rate during testing.
 
 ---
 
-## Technical Highlights
-
-### Pathfinding and Decision Logic
-- Manhattan-distance-based A* heuristic
-- Dynamic ghost proximity penalties added to path costs
-- Safety checks applied to both targets and intermediate paths
-- Separate logic for:
-  - Escape behavior
-  - Power pellet pursuit
-  - Pellet optimization
-
-### Rendering
-- Grid-based maze rendering
-- Animated Pac-Man mouth
-- Color-coded ghosts with state-based color changes
-- Heads-up display showing score and current level
-
-### Performance
-- Fixed timestep game loop
-- Lightweight data structures
-- No external AI or pathfinding libraries
+## Problem Statement
+Classic Pac‑Man is a constrained, grid‑based environment that is well‑suited for search algorithms. Many AI examples stop at isolated pathfinding demos. This project focuses on **integrating AI decision logic directly into a running game loop**, where the agent must continuously re‑evaluate its strategy in response to dynamic threats.
 
 ---
 
-## Project Structure
+## System Architecture
 
-```text
-pacman/
-├── constants.py
-│   ├── Screen dimensions, colors, and timing constants
-│   └── Maze layouts and level data
-├── rendering.py
-│   ├── Maze drawing
-│   ├── Pac-Man animation
-│   ├── Ghost rendering
-│   └── HUD and end screens
-├── game_logic.py
-│   ├── A* pathfinding implementation
-│   ├── Ghost AI and movement logic
-│   ├── Collision detection
-│   ├── Target selection heuristics
-│   └── Level reset utilities
-└── __init__.py
+**High‑level flow:**
+1. The game loop updates the environment state.
+2. The AI agent evaluates the current grid and ghost positions.
+3. A* pathfinding computes the optimal movement direction.
+4. Heuristics balance pellet distance against ghost proximity.
+5. The renderer updates the game state visually in real time.
 
-main.py
-├── Game loop and state management
-├── AI coordination
-└── Rendering orchestration
+**Core components:**
+- **Game Logic:** Movement rules, collision detection, scoring
+- **AI Engine:** A* search with heuristic evaluation
+- **Rendering Layer:** Pygame‑based visualization
+- **Configuration:** Centralized constants for grid and timing
 
-requirements.txt
-README.md
-.gitignore
+---
+
+## Tech Stack
+
+- **Language:** Python
+- **AI / Algorithms:** A* pathfinding, heuristic evaluation
+- **Game Framework:** Pygame
+- **Data Structures:** Grids, priority queues
+- **Tooling:** Git
+
+---
+
+## Scope and Constraints
+
+**In Scope**
+- Single‑agent Pac‑Man AI
+- Grid‑based maze navigation
+- Real‑time decision making
+- Deterministic ghost movement
+
+**Out of Scope**
+- Reinforcement learning
+- Multi‑agent training
+- Adaptive difficulty
+- Networked or multiplayer support
+
+The scope is intentionally limited to highlight algorithmic clarity and real‑time integration.
+
+---
+
+## Repository Structure
+
+```
+Pacman-AI/
+├── main.py            # Game entry point
+├── game_logic.py      # Core game rules and state updates
+├── rendering.py       # Pygame rendering layer
+├── constants.py       # Game configuration and constants
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## Installation
+## Running the Project Locally
 
-### Prerequisites
-- Python 3.9 or newer
-- pip package manager
+### Requirements
+- Python 3.9+
+- Pygame
 
 ### Setup
-
-Clone the repository:
 ```bash
-git clone https://github.com/yourusername/pacman_game.git
-cd pacman_game
-```
-
-Install dependencies:
-```bash
-pip install pygame
-```
-
-Run the game:
-```bash
+pip install -r requirements.txt
 python main.py
 ```
 
 ---
 
-## Controls
+## What This Project Demonstrates
 
-This game has no player controls.
-
-Pac-Man is fully AI-controlled and navigates the maze autonomously using A* pathfinding and dynamic decision logic.
-
----
-
-## Gameplay Mechanics
-
-### Power Mode
-- Activated when Pac-Man consumes a power pellet
-- Ghosts become vulnerable and can be eaten
-- Pac-Man actively targets nearby ghosts
-- Ghosts respawn after a short delay
-
-### Warp Tunnels
-- Located on the central row of the maze
-- Allow instant horizontal teleportation
-- Integrated into both Pac-Man and ghost movement logic
-- Ghosts experience a delay after warping for balance
+- Practical application of A* search in a live environment
+- Heuristic‑based decision making under time constraints
+- Clean separation of game logic, AI logic, and rendering
+- Translating algorithm theory into interactive software
 
 ---
 
-## Educational Value
-
-This project demonstrates:
-- A* pathfinding in a dynamic adversarial environment
-- Heuristic design beyond shortest-path problems
-- State-based artificial intelligence behavior
-- Real-time simulation and game loops
-- Clean, modular Python architecture
-
-This project is well suited for:
-- Computer science coursework
-- Artificial intelligence demonstrations
-- Game development portfolios
-- Technical interviews and resume projects
+## Author
+**Justis Dutt**  
+- Portfolio: https://www.justisdutt.com  
+- GitHub: https://github.com/JustisDutt  
+- LinkedIn: https://www.linkedin.com/in/justis-dutt-951834224/
 
 ---
-
-## License
-
-MIT License
-
-You are free to use, modify, and distribute this project with attribution.
